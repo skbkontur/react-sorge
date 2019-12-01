@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "sourceMap": true,
+    "strict": true,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "lib": ["es2017", "es2015", "dom"],
+    "types": ["node"],
+    "downlevelIteration": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

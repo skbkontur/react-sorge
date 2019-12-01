@@ -1,0 +1,32 @@
+{
+  "name": "react-sorge",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook -p 8089"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "semver": "6.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@skbkontur/react-ui": "^1.4.0",
+    "@storybook/react": "^5.2.1",
+    "@types/node": "^12.7.0",
+    "@types/semver": "6.2.0",
+    "@types/storybook__react": "^4.0.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "prettier": "1.19.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "storybook": "^5.1.11",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.0",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "^3.5.3"
+  }
+}
