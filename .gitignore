@@ -1,8 +1,13 @@
 .env
 .idea
 .npmrc
+.yarn.lock
 
 node_modules
+build
 yarn-debug.log
 yarn-error.log
 npm-debug.log
+
+fixtures/sorge.js
+fixtures/shared.js

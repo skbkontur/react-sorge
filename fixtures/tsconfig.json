@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "types": ["node", "@types/jest", "@types/jest-environment-puppeteer", "@types/react-dom"],
+    "target": "es2018",
+    "module": "commonjs",
+    "skipLibCheck": true
+  },
+  "include": ["./**/*"]
+}
