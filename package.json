@@ -1,32 +1,71 @@
 {
-  "name": "react-sorge",
+  "name": "@skbkontur/react-sorge",
   "version": "0.1.0",
-  "description": "",
+  "description": "React Fiber event listener",
   "main": "index.js",
-  "scripts": {
-    "storybook": "start-storybook -p 8089"
+  "typings": "typings/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:skbkontur/react-sorge.git"
   },
-  "author": "",
-  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skbkontur/react-sorge/issues"
+  },
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "postbuild": "copyfiles README.md package.json build && copyfiles -u=2 \"src/typings/**/*.d.ts\" build/typings/",
+    "clean": "git clean -fdxqe node_modules",
+    "test": "jest",
+    "debug": "cross-env TS_NODE_PROJECT=fixtures/tsconfig.json NODE_ENV=development webpack-dev-server --config fixtures/webpack.config.ts",
+    "lint": "tsc --noEmit",
+    "lint:test": "tsc -p fixtures/tsconfig.json --noEmit"
+  },
+  "license": "MIT",
   "dependencies": {
     "semver": "6.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@skbkontur/react-ui": "^1.4.0",
-    "@storybook/react": "^5.2.1",
-    "@types/node": "^12.7.0",
+    "@types/jest": "26.0.0",
+    "@types/jest-environment-puppeteer": "4.3.1",
+    "@types/node": "14.0.13",
+    "@types/react-dom": "16.9.8",
     "@types/semver": "6.2.0",
-    "@types/storybook__react": "^4.0.2",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
-    "prettier": "1.19.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "storybook": "^5.1.11",
-    "style-loader": "^1.0.0",
-    "ts-loader": "^6.2.0",
-    "tslint-config-prettier": "1.18.0",
-    "typescript": "^3.5.3"
+    "@types/webpack": "4.41.17",
+    "@types/webpack-dev-server": "3.11.0",
+    "babel-jest": "26.0.1",
+    "copyfiles": "2.3.0",
+    "cross-env": "7.0.2",
+    "jest": "26.0.1",
+    "jest-puppeteer": "4.4.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.0.5",
+    "puppeteer": "4.0.0",
+    "ts-jest": "26.1.0",
+    "ts-loader": "7.0.5",
+    "ts-node": "8.10.2",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "3.9.5",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.11.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.7.0",
+    "react-dom": ">=16.7.0"
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "transform": {
+      "\\.ts$": [
+        "ts-jest"
+      ]
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/fixtures/tsconfig.json"
+      }
+    },
+    "testRegex": "\\.test\\.ts$"
   }
 }
