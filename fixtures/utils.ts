@@ -12,7 +12,7 @@ export const Versions = [
   'next',
 ];
 
-export const TEST_PORT = 8080;
+export const TEST_PORT = 6060;
 export const TIMEOUT = 5000;
 
 export const getURL = (version: string): string => `http://localhost:${TEST_PORT}/${version}.html`;
