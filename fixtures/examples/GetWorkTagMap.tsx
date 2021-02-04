@@ -1,14 +1,13 @@
-import React from 'react';
 import { getWorkTagMap } from '../../src/lib';
 import { SorgeType } from '../../src/typings/SorgeTypes';
-import { report } from '../report';
 
 export const events: Array<keyof SorgeType> = [];
 
 export default function () {
-  window.historySorgeEvents['GetWorkTagMapCase_1'] = [getWorkTagMap('16.6.0')];
-  window.historySorgeEvents['GetWorkTagMapCase_2'] = [getWorkTagMap('16.4.3')];
-  window.historySorgeEvents['GetWorkTagMapCase_3'] = [getWorkTagMap('16.4.0')];
-  window.historySorgeEvents['GetWorkTagMapCase_4'] = [getWorkTagMap()];
+  window.historySorgeEvents['GetWorkTagMapCase_17.0.2'] = [getWorkTagMap('17.0.2')];
+  window.historySorgeEvents['GetWorkTagMapCase_17.0.0-alpha'] = [getWorkTagMap('17.0.0-alpha')];
+  window.historySorgeEvents['GetWorkTagMapCase_16.6.0-beta.0'] = [getWorkTagMap('16.6.0-beta.0')];
+  window.historySorgeEvents['GetWorkTagMapCase_16.4.3-alpha'] = [getWorkTagMap('16.4.3-alpha')];
+  window.historySorgeEvents['GetWorkTagMapCase_16.3.0'] = [getWorkTagMap('16.3.0')];
   return null;
 }
