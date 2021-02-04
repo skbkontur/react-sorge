@@ -108,6 +108,11 @@ function mountFiberRecursively(fiber: Fiber, parentFiber: Fiber | null) {
   }
 }
 
+function getFiberFlags(fiber: Fiber): number {
+  // The name of this field changed from "effectTag" to "flags"
+  return fiber.flags !== undefined ? fiber.flags : fiber.effectTag;
+}
+
 function didFiberRender(prevFiber: Fiber, nextFiber: Fiber): boolean {
   const { ReactTypeOfWork, ReactTypeOfSideEffect } = getInternalReactConstants();
 
@@ -119,7 +124,7 @@ function didFiberRender(prevFiber: Fiber, nextFiber: Fiber): boolean {
     case ReactTypeOfWork.SimpleMemoComponent:
       // For types that execute user code, we check PerformedWork effect.
       // We don't reflect bailouts (either referential or sCU) in DevTools.
-      return (nextFiber.effectTag & ReactTypeOfSideEffect.PerformedWork) === ReactTypeOfSideEffect.PerformedWork;
+      return (getFiberFlags(nextFiber) & ReactTypeOfSideEffect.PerformedWork) === ReactTypeOfSideEffect.PerformedWork;
     // Note: ContextConsumer only gets PerformedWork effect in 16.3.3+
     // so it won't get highlighted with React 16.3.0 to 16.3.2.
     default:

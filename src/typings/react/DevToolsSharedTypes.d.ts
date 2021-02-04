@@ -41,7 +41,7 @@ export type ReactPriorityLevelsType = {
 };
 
 export type WorkTagMap = {
-  Block: WorkTag,
+  CacheComponent: WorkTag,
   ClassComponent: WorkTag,
   ContextConsumer: WorkTag,
   ContextProvider: WorkTag,
@@ -58,9 +58,12 @@ export type WorkTagMap = {
   IncompleteClassComponent: WorkTag,
   IndeterminateComponent: WorkTag,
   LazyComponent: WorkTag,
+  LegacyHiddenComponent: WorkTag,
   MemoComponent: WorkTag,
   Mode: WorkTag,
+  OffscreenComponent: WorkTag,
   Profiler: WorkTag,
+  ScopeComponent: WorkTag,
   SimpleMemoComponent: WorkTag,
   SuspenseComponent: WorkTag,
   SuspenseListComponent: WorkTag,
@@ -68,7 +71,8 @@ export type WorkTagMap = {
 };
 
 export type ReactTypeOfSideEffectType = {
-  NoEffect: number;
+  NoFlags: number;
+  NoEffect: number; // Fallback
   PerformedWork: number;
   Placement: number;
 };

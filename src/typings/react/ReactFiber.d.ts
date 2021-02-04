@@ -86,7 +86,10 @@ export type Fiber = {
   mode: TypeOfMode;
 
   // Effect
-  effectTag: SideEffectTag;
+  flags: Flags,
+  subtreeFlags: Flags,
+  deletions: Array<Fiber> | null,
+  effectTag: SideEffectTag; // Fallback
 
   // Singly linked list fast path to the next fiber with side-effects.
   nextEffect: Fiber | null;
