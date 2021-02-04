@@ -1,18 +1,10 @@
-import { Source } from './ReactElementType';
-import { ExpirationTime } from './ReactFiberExpirationTime';
-import { HookType } from './ReactFiberHooks';
-import { ContextDependency } from './ReactFiberNewContext';
-import { SideEffectTag } from './ReactSideEffectTags';
-import { TypeOfMode } from './ReactTypeOfMode';
-import { ReactEventResponder, ReactEventResponderInstance, RefObject } from './ReactTypes';
-import { UpdateQueue } from './ReactUpdateQueue';
+import {
+  Flags,
+  RefObject,
+  SideEffectTag,
+  TypeOfMode,
+} from './ReactTypes';
 import { WorkTag } from './DevToolsHookTypes';
-
-export type Dependencies = {
-  expirationTime: ExpirationTime;
-  firstContext: ContextDependency<unknown> | null;
-  responders: Map<ReactEventResponder<any, any>, ReactEventResponderInstance<any, any>> | null;
-};
 
 // A Fiber is work on a Component that needs to be done or was done. There can
 // be more than one per component.
