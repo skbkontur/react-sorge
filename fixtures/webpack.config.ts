@@ -1,11 +1,11 @@
 import * as path from 'path';
-import webpack from 'webpack';
-import webpackDevServer from 'webpack-dev-server';
+import webpack, { Configuration } from 'webpack';
+import { Configuration as DevServer } from 'webpack-dev-server';
 import { TEST_PORT } from './utils';
 
 const env: webpack.Configuration['mode'] = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
-const config: webpack.Configuration = {
+const config: Configuration & { devServer: DevServer } = {
   context: __dirname,
   entry: { shared: './shared.tsx', core: '../src/internals/core.ts', sorge: './externals/sorge.ts' },
   output: {
@@ -15,7 +15,7 @@ const config: webpack.Configuration = {
     contentBase: path.join(__dirname, '../fixtures/regression'),
     hot: true,
     port: TEST_PORT,
-  } as webpackDevServer.Configuration,
+  },
   module: {
     rules: [
       {
@@ -34,9 +34,9 @@ const config: webpack.Configuration = {
   mode: env,
   target: 'web',
   externals: [
-    function (context, request, callback) {
+    function ({ context, request }, callback) {
       if (!/externals$/.test(context) && /Sorge$/.test(request)) {
-        return callback(null, 'Sorge', 'window');
+        return callback(null, 'window Sorge');
       }
       callback();
     },

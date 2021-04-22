@@ -17,7 +17,7 @@
     "postbuild": "copyfiles README.md package.json build && copyfiles -u=2 \"src/typings/**/*.d.ts\" build/typings/",
     "clean": "git clean -fdxqe node_modules",
     "test": "jest",
-    "debug": "cross-env TS_NODE_PROJECT=fixtures/tsconfig.json NODE_ENV=development webpack-dev-server --config fixtures/webpack.config.ts",
+    "debug": "cross-env TS_NODE_PROJECT=fixtures/tsconfig.json NODE_ENV=development webpack serve --config fixtures/webpack.config.ts",
     "lint": "tsc --noEmit",
     "lint:test": "tsc -p fixtures/tsconfig.json --noEmit"
   },
@@ -31,8 +31,7 @@
     "@types/node": "14.0.13",
     "@types/react-dom": "16.9.8",
     "@types/semver": "6.2.0",
-    "@types/webpack": "4.41.17",
-    "@types/webpack-dev-server": "3.11.0",
+    "@types/webpack-dev-server": "3.11.3",
     "babel-jest": "26.0.1",
     "copyfiles": "2.3.0",
     "cross-env": "7.0.2",
@@ -47,9 +46,9 @@
     "ts-node": "8.10.2",
     "tsconfig-paths": "3.9.0",
     "typescript": "3.9.5",
-    "webpack": "4.43.0",
-    "webpack-cli": "3.3.11",
-    "webpack-dev-server": "3.11.0"
+    "webpack": "5.35.0",
+    "webpack-cli": "4.6.0",
+    "webpack-dev-server": "3.11.2"
   },
   "peerDependencies": {
     "react": ">=16.7 <=17.0",
