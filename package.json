@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/jest": "26.0.0",
     "@types/jest-environment-puppeteer": "4.3.1",
-    "@types/node": "14.0.13",
+    "@types/node": "14.14.41",
     "@types/react-dom": "16.9.8",
     "@types/semver": "6.2.0",
     "@types/webpack-dev-server": "3.11.3",
@@ -41,11 +41,11 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.0.5",
     "puppeteer": "4.0.0",
-    "ts-jest": "26.1.0",
-    "ts-loader": "7.0.5",
-    "ts-node": "8.10.2",
+    "ts-jest": "26.5.5",
+    "ts-loader": "9.1.0",
+    "ts-node": "9.1.1",
     "tsconfig-paths": "3.9.0",
-    "typescript": "3.9.5",
+    "typescript": "4.2.4",
     "webpack": "5.35.0",
     "webpack-cli": "4.6.0",
     "webpack-dev-server": "3.11.2"
@@ -64,7 +64,7 @@
     },
     "globals": {
       "ts-jest": {
-        "tsConfig": "<rootDir>/fixtures/tsconfig.json"
+        "tsconfig": "<rootDir>/fixtures/tsconfig.json"
       }
     },
     "testRegex": "\\.test\\.ts$"
