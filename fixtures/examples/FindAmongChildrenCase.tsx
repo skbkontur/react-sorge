@@ -6,14 +6,6 @@ import { report } from '../report';
 
 export const events: Array<keyof SorgeType> = [];
 
-const onMount = (needleName: string) => (fiber) => {
-  const found = findAmongChildren(fiber, (fiberChild) => fiberChild.key === needleName);
-  report('mount', 'FindAmongChildrenCase', null, {
-    key: fiber.key,
-    needle: found ? found.key : found,
-  });
-};
-
 export default function () {
   return (
     <SorgeNode

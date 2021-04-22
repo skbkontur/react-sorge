@@ -52,8 +52,8 @@
     "webpack-dev-server": "3.11.0"
   },
   "peerDependencies": {
-    "react": ">=16.7.0",
-    "react-dom": ">=16.7.0"
+    "react": ">=16.7 <=17.0",
+    "react-dom": ">=16.7 <=17.0"
   },
   "jest": {
     "testResultsProcessor": "jest-teamcity-reporter",

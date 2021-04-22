@@ -1,18 +1,10 @@
-import { Source } from './ReactElementType';
-import { ExpirationTime } from './ReactFiberExpirationTime';
-import { HookType } from './ReactFiberHooks';
-import { ContextDependency } from './ReactFiberNewContext';
-import { SideEffectTag } from './ReactSideEffectTags';
-import { TypeOfMode } from './ReactTypeOfMode';
-import { ReactEventResponder, ReactEventResponderInstance, RefObject } from './ReactTypes';
-import { UpdateQueue } from './ReactUpdateQueue';
+import {
+  Flags,
+  RefObject,
+  SideEffectTag,
+  TypeOfMode,
+} from './ReactTypes';
 import { WorkTag } from './DevToolsHookTypes';
-
-export type Dependencies = {
-  expirationTime: ExpirationTime;
-  firstContext: ContextDependency<unknown> | null;
-  responders: Map<ReactEventResponder<any, any>, ReactEventResponderInstance<any, any>> | null;
-};
 
 // A Fiber is work on a Component that needs to be done or was done. There can
 // be more than one per component.
@@ -68,14 +60,8 @@ export type Fiber = {
   pendingProps: any; // this type will be more specific once we overload the tag.
   memoizedProps: any; // The props used to create the output.
 
-  // A queue of state updates and callbacks.
-  updateQueue: UpdateQueue<any> | null;
-
   // The state used to create the output
   memoizedState: any;
-
-  // Dependencies (contexts, events) for this fiber, if it has any
-  dependencies: Dependencies | null;
 
   // Bitfield that describes properties about the fiber and its subtree. E.g.
   // the ConcurrentMode flag indicates whether the subtree should be async-by-
@@ -86,7 +72,10 @@ export type Fiber = {
   mode: TypeOfMode;
 
   // Effect
-  effectTag: SideEffectTag;
+  flags: Flags,
+  subtreeFlags: Flags,
+  deletions: Array<Fiber> | null,
+  effectTag: SideEffectTag; // Fallback
 
   // Singly linked list fast path to the next fiber with side-effects.
   nextEffect: Fiber | null;
@@ -97,49 +86,8 @@ export type Fiber = {
   firstEffect: Fiber | null;
   lastEffect: Fiber | null;
 
-  // Represents a time in the future by which this work should be completed.
-  // Does not include work found in its subtree.
-  expirationTime: ExpirationTime;
-
-  // This is used to quickly determine if a subtree has no pending changes.
-  childExpirationTime: ExpirationTime;
-
   // This is a pooled version of a Fiber. Every fiber that gets updated will
   // eventually have a pair. There are cases when we can clean up pairs to save
   // memory if we need to.
   alternate: Fiber | null;
-
-  // Time spent rendering this Fiber and its descendants for the current update.
-  // This tells us how well the tree makes use of sCU for memoization.
-  // It is reset to 0 each time we render and only updated when we don't bailout.
-  // This field is only set when the enableProfilerTimer flag is enabled.
-  actualDuration?: number;
-
-  // If the Fiber is currently active in the "render" phase,
-  // This marks the time at which the work began.
-  // This field is only set when the enableProfilerTimer flag is enabled.
-  actualStartTime?: number;
-
-  // Duration of the most recent render time for this Fiber.
-  // This value is not updated when we bailout for memoization purposes.
-  // This field is only set when the enableProfilerTimer flag is enabled.
-  selfBaseDuration?: number;
-
-  // Sum of base times for all descendants of this Fiber.
-  // This value bubbles up during the "complete" phase.
-  // This field is only set when the enableProfilerTimer flag is enabled.
-  treeBaseDuration?: number;
-
-  // Conceptual aliases
-  // workInProgress : Fiber ->  alternate The alternate used for reuse happens
-  // to be the same as work in progress.
-  // __DEV__ only
-  _debugID?: number;
-  _debugSource?: Source | null;
-  _debugOwner?: Fiber | null;
-  _debugIsCurrentlyTiming?: boolean;
-  _debugNeedsRemount?: boolean;
-
-  // Used to verify that the order of hooks does not change between renders.
-  _debugHookTypes?: Array<HookType> | null;
 };

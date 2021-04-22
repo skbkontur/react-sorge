@@ -5,7 +5,7 @@ import {
   WorkTagMap,
 } from '../typings/react/DevToolsSharedTypes';
 import { Fiber } from '../typings';
-import { gte } from 'semver';
+import { gt, gte } from 'semver';
 import {
   CONCURRENT_MODE_NUMBER,
   CONCURRENT_MODE_SYMBOL_STRING,
@@ -60,6 +60,7 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
   }
 
   const ReactTypeOfSideEffect: ReactTypeOfSideEffectType = {
+    NoFlags: 0b00,
     NoEffect: 0b00,
     PerformedWork: 0b01,
     Placement: 0b10,
@@ -84,11 +85,10 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
   let ReactTypeOfWork: WorkTagMap = null as any;
 
   // **********************************************************
-  // The section below is copied from files in React repo.
-  // Keep it in sync, and add version guards if it changes.
-  if (gte(version, '16.6.0-beta.0')) {
+  // Currently the version in Git is 17.0.2 (but that version has not been/may not end up being released).
+  if (gt(version, '17.0.1')) {
     ReactTypeOfWork = {
-      Block: 22,
+      CacheComponent: 24, // Experimental
       ClassComponent: 1,
       ContextConsumer: 9,
       ContextProvider: 10,
@@ -105,9 +105,72 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
       IncompleteClassComponent: 17,
       IndeterminateComponent: 2,
       LazyComponent: 16,
+      LegacyHiddenComponent: 23,
       MemoComponent: 14,
       Mode: 8,
+      OffscreenComponent: 22, // Experimental
       Profiler: 12,
+      ScopeComponent: 21, // Experimental
+      SimpleMemoComponent: 15,
+      SuspenseComponent: 13,
+      SuspenseListComponent: 19, // Experimental
+      YieldComponent: -1, // Removed
+    };
+  } else if (gte(version, '17.0.0-alpha')) {
+    ReactTypeOfWork = {
+      CacheComponent: -1, // Doesn't exist yet
+      ClassComponent: 1,
+      ContextConsumer: 9,
+      ContextProvider: 10,
+      CoroutineComponent: -1, // Removed
+      CoroutineHandlerPhase: -1, // Removed
+      DehydratedSuspenseComponent: 18, // Behind a flag
+      ForwardRef: 11,
+      Fragment: 7,
+      FunctionComponent: 0,
+      HostComponent: 5,
+      HostPortal: 4,
+      HostRoot: 3,
+      HostText: 6,
+      IncompleteClassComponent: 17,
+      IndeterminateComponent: 2,
+      LazyComponent: 16,
+      LegacyHiddenComponent: 24,
+      MemoComponent: 14,
+      Mode: 8,
+      OffscreenComponent: 23, // Experimental
+      Profiler: 12,
+      ScopeComponent: 21, // Experimental
+      SimpleMemoComponent: 15,
+      SuspenseComponent: 13,
+      SuspenseListComponent: 19, // Experimental
+      YieldComponent: -1, // Removed
+    };
+  } else if (gte(version, '16.6.0-beta.0')) {
+    ReactTypeOfWork = {
+      CacheComponent: -1, // Doesn't exist yet
+      ClassComponent: 1,
+      ContextConsumer: 9,
+      ContextProvider: 10,
+      CoroutineComponent: -1, // Removed
+      CoroutineHandlerPhase: -1, // Removed
+      DehydratedSuspenseComponent: 18, // Behind a flag
+      ForwardRef: 11,
+      Fragment: 7,
+      FunctionComponent: 0,
+      HostComponent: 5,
+      HostPortal: 4,
+      HostRoot: 3,
+      HostText: 6,
+      IncompleteClassComponent: 17,
+      IndeterminateComponent: 2,
+      LazyComponent: 16,
+      LegacyHiddenComponent: -1,
+      MemoComponent: 14,
+      Mode: 8,
+      OffscreenComponent: -1, // Experimental
+      Profiler: 12,
+      ScopeComponent: -1, // Experimental
       SimpleMemoComponent: 15,
       SuspenseComponent: 13,
       SuspenseListComponent: 19, // Experimental
@@ -115,7 +178,7 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
     };
   } else if (gte(version, '16.4.3-alpha')) {
     ReactTypeOfWork = {
-      Block: -1, // Doesn't exist yet
+      CacheComponent: -1, // Doesn't exist yet
       ClassComponent: 2,
       ContextConsumer: 11,
       ContextProvider: 12,
@@ -132,9 +195,12 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
       IncompleteClassComponent: -1, // Doesn't exist yet
       IndeterminateComponent: 4,
       LazyComponent: -1, // Doesn't exist yet
+      LegacyHiddenComponent: -1,
       MemoComponent: -1, // Doesn't exist yet
       Mode: 10,
+      OffscreenComponent: -1, // Experimental
       Profiler: 15,
+      ScopeComponent: -1, // Experimental
       SimpleMemoComponent: -1, // Doesn't exist yet
       SuspenseComponent: 16,
       SuspenseListComponent: -1, // Doesn't exist yet
@@ -142,7 +208,7 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
     };
   } else {
     ReactTypeOfWork = {
-      Block: -1, // Doesn't exist yet
+      CacheComponent: -1, // Doesn't exist yet
       ClassComponent: 2,
       ContextConsumer: 12,
       ContextProvider: 13,
@@ -159,9 +225,12 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
       IncompleteClassComponent: -1, // Doesn't exist yet
       IndeterminateComponent: 0,
       LazyComponent: -1, // Doesn't exist yet
+      LegacyHiddenComponent: -1,
       MemoComponent: -1, // Doesn't exist yet
       Mode: 11,
+      OffscreenComponent: -1, // Experimental
       Profiler: 15,
+      ScopeComponent: -1, // Experimental
       SimpleMemoComponent: -1, // Doesn't exist yet
       SuspenseComponent: 16,
       SuspenseListComponent: -1, // Doesn't exist yet
@@ -190,7 +259,11 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
     HostPortal,
     HostText,
     Fragment,
+    LazyComponent,
+    LegacyHiddenComponent,
     MemoComponent,
+    OffscreenComponent,
+    ScopeComponent,
     SimpleMemoComponent,
     SuspenseComponent,
     SuspenseListComponent,
@@ -240,11 +313,22 @@ export function getInternalReactConstants(version?: string): InternalReactConsta
       case HostText:
       case Fragment:
         return null;
+      case LazyComponent:
+        // This display name will not be user visible.
+        // Once a Lazy component loads its inner component, React replaces the tag and type.
+        // This display name will only show up in console logs when DevTools DEBUG mode is on.
+        return 'Lazy';
       case MemoComponent:
       case SimpleMemoComponent:
         return getDisplayName(resolvedType, 'Anonymous');
       case SuspenseComponent:
         return 'Suspense';
+      case LegacyHiddenComponent:
+        return 'LegacyHidden';
+      case OffscreenComponent:
+        return 'Offscreen';
+      case ScopeComponent:
+        return 'Scope';
       case SuspenseListComponent:
         return 'SuspenseList';
       default:
