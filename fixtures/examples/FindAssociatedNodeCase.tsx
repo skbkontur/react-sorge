@@ -16,12 +16,12 @@ const refs = {
   svg: null,
 };
 
-const ref = (out) => (el) => (refs[out] = el);
+const ref = out => el => (refs[out] = el);
 
 export default function () {
   return (
     <SorgeNode
-      onMount={(fiber) =>
+      onMount={fiber =>
         report('mount', 'FindAssociatedNodeCase', null, {
           tag: fiber.key,
           found: findAssociatedNode(fiber) === refs[fiber.key],

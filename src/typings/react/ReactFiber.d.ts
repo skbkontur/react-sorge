@@ -1,9 +1,4 @@
-import {
-  Flags,
-  RefObject,
-  SideEffectTag,
-  TypeOfMode,
-} from './ReactTypes';
+import { Flags, RefObject, SideEffectTag, TypeOfMode } from './ReactTypes';
 import { WorkTag } from './DevToolsHookTypes';
 
 // A Fiber is work on a Component that needs to be done or was done. There can
@@ -72,9 +67,9 @@ export type Fiber = {
   mode: TypeOfMode;
 
   // Effect
-  flags: Flags,
-  subtreeFlags: Flags,
-  deletions: Array<Fiber> | null,
+  flags: Flags;
+  subtreeFlags: Flags;
+  deletions: Array<Fiber> | null;
   effectTag: SideEffectTag; // Fallback
 
   // Singly linked list fast path to the next fiber with side-effects.

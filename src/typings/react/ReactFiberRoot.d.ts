@@ -15,4 +15,4 @@ type BaseFiberRootProperties = {
 // Profiling properties are only safe to access in profiling builds (when enableSchedulerTracing is true).
 // The types are defined separately within this file to ensure they stay in sync.
 // (We don't have to use an inline :any cast when enableSchedulerTracing is disabled.)
-export type FiberRoot = BaseFiberRootProperties
+export type FiberRoot = BaseFiberRootProperties;

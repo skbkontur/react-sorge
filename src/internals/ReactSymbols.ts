@@ -19,8 +19,7 @@ export const ELEMENT_NUMBER = 0xeac7;
 export const ELEMENT_SYMBOL_STRING = 'Symbol(react.element)';
 
 export const DEBUG_TRACING_MODE_NUMBER = 0xeae1;
-export const DEBUG_TRACING_MODE_SYMBOL_STRING =
-  'Symbol(react.debug_trace_mode)';
+export const DEBUG_TRACING_MODE_SYMBOL_STRING = 'Symbol(react.debug_trace_mode)';
 
 export const FORWARD_REF_NUMBER = 0xead0;
 export const FORWARD_REF_SYMBOL_STRING = 'Symbol(react.forward_ref)';

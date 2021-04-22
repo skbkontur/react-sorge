@@ -1,7 +1,7 @@
 import { getURL, TIMEOUT, Versions } from '../utils';
 
 describe('FunctionComponent', () => {
-  describe.each(Versions)('React %s', (version) => {
+  describe.each(Versions)('React %s', version => {
     beforeAll(async () => {
       await page.setJavaScriptEnabled(true);
       await page.goto(getURL(version), { timeout: TIMEOUT });

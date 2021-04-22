@@ -9,7 +9,7 @@ export const events: Array<keyof SorgeType> = [];
 export default function () {
   return (
     <SorgeNode
-      onMount={(fiber) => {
+      onMount={fiber => {
         report('mount', 'GetDisplayName', null, {
           key: fiber.key,
           displayName: getDisplayName(fiber),
@@ -22,7 +22,7 @@ export default function () {
       <ClassComponent key="ClassComponent" />
       <FunctionComponent key="FunctionComponent" />
       <Context.Provider key="Context.Provider" value="two">
-        <Context.Consumer key="Context.Consumer">{(context) => <dd key={context} />}</Context.Consumer>
+        <Context.Consumer key="Context.Consumer">{context => <dd key={context} />}</Context.Consumer>
       </Context.Provider>
       <table key="table">
         <thead key="thead">

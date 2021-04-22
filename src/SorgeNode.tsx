@@ -39,7 +39,7 @@ export class SorgeNode extends React.Component<SorgeNodeProps> {
     }
   };
 
-  private onUnmount: SorgeHandlerUnmount = (fiber) => {
+  private onUnmount: SorgeHandlerUnmount = fiber => {
     if (checking(fiber, this.key)) {
       if (this.props.onUnmount) {
         this.props.onUnmount(fiber);
