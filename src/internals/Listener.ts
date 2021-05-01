@@ -9,14 +9,14 @@ export class Listener<H extends Function> {
     this.listeners.set(handler, root);
     return () => this.off(handler);
   };
-  public off: Off<H> = (handler) => {
+  public off: Off<H> = handler => {
     this.listeners.delete(handler);
     return this;
   };
   // @ts-ignore
   public emit: H = (...args: [Fiber, Fiber?, Fiber?]) => {
     for (const [handler, root] of this.listeners) {
-      if (root === null || findAmongParents(args[0], (fiberParent) => fiberParent.stateNode?.containerInfo === root)) {
+      if (root === null || findAmongParents(args[0], fiberParent => fiberParent.stateNode?.containerInfo === root)) {
         handler(...args);
       }
     }

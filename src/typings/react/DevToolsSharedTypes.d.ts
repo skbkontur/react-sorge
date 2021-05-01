@@ -14,33 +14,33 @@ export type ReactPriorityLevelsType = {
 };
 
 export type WorkTagMap = {
-  CacheComponent: WorkTag,
-  ClassComponent: WorkTag,
-  ContextConsumer: WorkTag,
-  ContextProvider: WorkTag,
-  CoroutineComponent: WorkTag,
-  CoroutineHandlerPhase: WorkTag,
-  DehydratedSuspenseComponent: WorkTag,
-  ForwardRef: WorkTag,
-  Fragment: WorkTag,
-  FunctionComponent: WorkTag,
-  HostComponent: WorkTag,
-  HostPortal: WorkTag,
-  HostRoot: WorkTag,
-  HostText: WorkTag,
-  IncompleteClassComponent: WorkTag,
-  IndeterminateComponent: WorkTag,
-  LazyComponent: WorkTag,
-  LegacyHiddenComponent: WorkTag,
-  MemoComponent: WorkTag,
-  Mode: WorkTag,
-  OffscreenComponent: WorkTag,
-  Profiler: WorkTag,
-  ScopeComponent: WorkTag,
-  SimpleMemoComponent: WorkTag,
-  SuspenseComponent: WorkTag,
-  SuspenseListComponent: WorkTag,
-  YieldComponent: WorkTag,
+  CacheComponent: WorkTag;
+  ClassComponent: WorkTag;
+  ContextConsumer: WorkTag;
+  ContextProvider: WorkTag;
+  CoroutineComponent: WorkTag;
+  CoroutineHandlerPhase: WorkTag;
+  DehydratedSuspenseComponent: WorkTag;
+  ForwardRef: WorkTag;
+  Fragment: WorkTag;
+  FunctionComponent: WorkTag;
+  HostComponent: WorkTag;
+  HostPortal: WorkTag;
+  HostRoot: WorkTag;
+  HostText: WorkTag;
+  IncompleteClassComponent: WorkTag;
+  IndeterminateComponent: WorkTag;
+  LazyComponent: WorkTag;
+  LegacyHiddenComponent: WorkTag;
+  MemoComponent: WorkTag;
+  Mode: WorkTag;
+  OffscreenComponent: WorkTag;
+  Profiler: WorkTag;
+  ScopeComponent: WorkTag;
+  SimpleMemoComponent: WorkTag;
+  SuspenseComponent: WorkTag;
+  SuspenseListComponent: WorkTag;
+  YieldComponent: WorkTag;
 };
 
 export type ReactTypeOfSideEffectType = {

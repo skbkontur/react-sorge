@@ -6,5 +6,5 @@ import { Fiber } from '../typings';
  * Ищёт первый элемент типа `Node` внутри компонента.
  */
 export function findAssociatedNode(fiber: Fiber): Node | null {
-  return findAmongChildren(fiber, (fiberChild) => fiberChild.stateNode instanceof Node)?.stateNode;
+  return findAmongChildren(fiber, fiberChild => fiberChild.stateNode instanceof Node)?.stateNode;
 }

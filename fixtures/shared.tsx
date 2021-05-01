@@ -42,7 +42,7 @@ for (const root of roots) {
   if (fixtureName !== null && examples.hasOwnProperty(fixtureName)) {
     const Example = examples[fixtureName];
     Example.events.map((eventName: keyof SorgeType) => {
-      Sorge[eventName].on((fiber) => report(eventName, fixtureName, fiber), root);
+      Sorge[eventName].on(fiber => report(eventName, fixtureName, fiber), root);
     });
     ReactDOM.render(<Example.default />, root, () => Example.renderCallback?.(root));
   }

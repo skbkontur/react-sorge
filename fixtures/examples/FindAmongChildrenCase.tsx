@@ -10,8 +10,8 @@ export default function () {
   return (
     <SorgeNode
       key="sorge"
-      onMount={(fiber) => {
-        const found = findAmongChildren(fiber, (fiberChild) => fiberChild.key === 'needle_2');
+      onMount={fiber => {
+        const found = findAmongChildren(fiber, fiberChild => fiberChild.key === 'needle_2');
         report('mount', 'FindAmongChildrenCase_2', null, {
           key: fiber.key,
           needle: found ? found.key : found,
@@ -21,8 +21,8 @@ export default function () {
       <table key="table">
         <SorgeNode
           key="sorge"
-          onMount={(fiber) => {
-            const found = findAmongChildren(fiber, (fiberChild) => fiberChild.key === 'needle_1');
+          onMount={fiber => {
+            const found = findAmongChildren(fiber, fiberChild => fiberChild.key === 'needle_1');
             report('mount', 'FindAmongChildrenCase_1', null, {
               key: fiber.key,
               needle: found ? found.key : found,
